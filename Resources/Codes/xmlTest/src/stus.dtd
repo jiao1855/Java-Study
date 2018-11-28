@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT stus(stu)
+<!ELEMENT stu(name,sex)
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT sex int>

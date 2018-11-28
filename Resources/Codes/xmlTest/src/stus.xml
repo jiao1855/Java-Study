@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE stus SYSTEM "stus.dtd">
+<stus>
+	<stu>
+		<name>jyq</name>
+		<age>32</age>
+		<sex>1</sex>
+	</stu>
+	<stu>
+		<name>baby</name>
+		<age>28</age>
+		<sex>0</sex>
+	</stu>
+</stus>
