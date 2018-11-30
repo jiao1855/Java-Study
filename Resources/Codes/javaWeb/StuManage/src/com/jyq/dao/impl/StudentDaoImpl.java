@@ -21,6 +21,7 @@ public class StudentDaoImpl implements StudentDao {
 		List<Student> students = new ArrayList<Student>();
 		try {
 			conn = JDBCUtils.getConnection();
+			conn.setAutoCommit(false);
 			String sql = "select * from student";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -33,7 +34,14 @@ public class StudentDaoImpl implements StudentDao {
 				student.setAddress(rs.getString("address"));
 				students.add(student);
 			}
+			conn.commit();
 		} catch (SQLException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		} finally {
 			JDBCUtils.release(conn, ps, rs);
