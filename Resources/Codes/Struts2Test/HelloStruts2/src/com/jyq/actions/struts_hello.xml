@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- package标签：struts2通过包来管理Action在配置
+			name：包名，在一个项目中不重名即可。
+			extends：继承哪个包，通常值为：struts-default
+			namespace：名称空间，与<action>标签中的name属性共同决定访问路径，默认为空。
+	-->
+	<package name="demo1" extends="struts-default" namespace="">
+		<!-- action标签：
+				name：与namespace共同决定访问路径
+				class：Action类的全路径
+				method：执行Action中的哪个方法的方法名，默认值execute
+				converter：用于设置类型转换器				
+			-->
+		<action name="hello" class="com.jyq.actions.HelloAction" method="test">
+			<!-- 配置页面跳转 -->
+			<result name="success">success.jsp</result>
+		</action>
+	</package>
+</struts>

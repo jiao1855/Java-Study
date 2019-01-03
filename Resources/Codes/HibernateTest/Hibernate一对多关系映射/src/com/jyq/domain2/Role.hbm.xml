@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.jyq.domain2.Role" table="sys_role">
+		<id name="role_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="role_name"></property>
+		<property name="role_memo"></property>
+		<!-- 建立与用户的多对多的映射关系 -->
+		<!-- set标签：
+			table：中间表的名称 -->
+		<set name="users" table="sys_user_role">
+			<!-- key标签：
+				column：当前对象在中间表中的外键名称 -->
+			<key column="role_id"></key>
+			<!-- many-to-many标签：
+				class：对方类的全称
+				column：对方类在中间表中的外键名称 -->
+			<many-to-many class="com.jyq.domain2.User" column="user_id"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- 连接数据库的基本参数 -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/hibernatetest1</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">jyq</property>
+		<!-- 配置Hibernate的方言 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- 可选配置================ -->
+		<!-- 打印SQL -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- 自动创建表，有四个取值：
+			#hibernate.hbm2ddl.auto update
+				如果数据库中有表，使用原有表，如果没有，创建新表(可更新表结构)
+			#hibernate.hbm2ddl.auto validate
+				如果数据库中有表，使用原有表，如果没有，不会创建表(检验映射和表结构)
+			#hibernate.hbm2ddl.auto create （测试用）
+				如果数据库中有表，删除表，重新创建表，如果没有表，创建表。
+			#hibernate.hbm2ddl.auto create-drop （测试用）
+				如果数据库中有表，删除表，重新创建表，执行操作后删除表，如果没有表，创建表，执行操作后删除表。
+		-->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- 配置C3P0连接池 -->
+		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<!--在连接池中可用的数据库连接的最少数目 -->
+		<property name="c3p0.min_size">5</property>
+		<!--在连接池中所有数据库连接的最大数目  -->
+		<property name="c3p0.max_size">20</property>
+		<!--设定数据库连接的过期时间,以秒为单位,
+		如果连接池中的某个数据库连接处于空闲状态的时间超过了timeout时间,就会从连接池中清除 -->
+		<property name="c3p0.timeout">120</property>
+		 <!--每3000秒检查所有连接池中的空闲连接 以秒为单位-->
+		<property name="c3p0.idle_test_period">3000</property>
+		
+		<!-- 设置事务的隔离级别
+			1-read uncommitted
+			2-read committed
+			4-repeatable read
+			8-serializable
+		-->
+		<property name="hibernate.connection.isolation">4</property>
+		
+		<!-- thread：Session对象的生命周期与本地线程绑定
+			 jta：Session对象的生命周期与JTA事务绑定
+			 managed：Hibernate委托程序来管理Session对象的生命周期
+		-->
+		<property name="hibernate.current_session_context_class">thread</property>
+		
+		<!-- 配置映射文件关联 -->
+		<mapping resource="com/jyq/domain/Customer.hbm.xml"/>
+		<mapping resource="com/jyq/domain/LinkMan.hbm.xml"/>
+		
+		<mapping resource="com/jyq/domain2/User.hbm.xml"/>
+		<mapping resource="com/jyq/domain2/Role.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

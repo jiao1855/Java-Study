@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<constant name="struts.action.extension" value="action"></constant>
+
+	<include file="com/jyq/actions/struts_hello.xml"></include>
+	<include file="com/jyq/actions/struts_user.xml"></include>
+	<include file="com/jyq/actions/struts_user3.xml"></include>
+	
+	
+	
+	<package name="servletApi" extends="struts-default">
+		<!-- 全局结果页面的配置 -->
+		<global-results>
+			<result>success.jsp</result>
+		</global-results>
+		
+		<action name="ServletApiAccess1" class="com.jyq.servletapi.ServletApiAccess" method="execute1">
+			<!-- 局部结果页面
+				name属性：逻辑视图的名称，默认值：success
+				type属性：页面跳转的类型，它有以下几个常用取值
+					dispatcher		：默认值，请求转发。（Action转发JSP）
+					redirect		：重定向。（Action重定向JSP）
+					chain			：转发。（Action转发Action）
+					redirectAction	：重定向。（Action重定向Action）
+					stream			：Struts2中提供文件下载的功能。
+			-->
+			<result name="success" type="redirect">success.jsp</result>
+		</action>
+		<action name="ServletApiAccess2" class="com.jyq.servletapi.ServletApiAccess" method="execute2" />
+		<action name="ServletApiAccess3" class="com.jyq.servletapi.ServletApiAccess" method="execute3" />
+	</package>
+	
+	<package name="dataPackage" extends="struts-default">
+		
+		<global-results>
+			<result name="input">index.jsp</result>
+		</global-results>
+		
+		<action name="StudentExecute1" class="com.jyq.actions.StudentAction1"></action>
+		<action name="StudentExecute2" class="com.jyq.actions.StudentAction2"></action>
+		<action name="StudentExecute3" class="com.jyq.actions.StudentAction3"></action>
+	</package>
+	
+	<package name="product" extends="struts-default">
+		<action name="productList" class="com.jyq.actions.ProductListAction"></action>
+		<action name="productMap" class="com.jyq.actions.ProductMapAction"></action>
+	</package>
+	
+</struts>

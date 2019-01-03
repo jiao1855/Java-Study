@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<package name="test" extends="struts-default">
+		<global-results>
+			<result>success.jsp</result>
+		</global-results>
+		<action name="test1" class="com.jyq.actions.ValueStackTest" />
+		<action name="test2" class="com.jyq.actions.ValueStackTest2" />
+		<action name="test3" class="com.jyq.actions.ValueStackTest3" />
+		<action name="test4" class="com.jyq.actions.ValueStackTest4" />
+		<action name="test5" class="com.jyq.actions.ValueStackTest5" />
+	</package>
+</struts>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="test" extends="struts-default">
+		<!-- 定义拦截器 -->
+		<interceptors>
+			<interceptor name="myInterceptor1" class="com.jyq.interceptors.MyInterceptor1" />
+			<interceptor name="myInterceptor2" class="com.jyq.interceptors.MyInterceptor2" />
+			<interceptor-stack name="mystack">
+				<!-- 引入拦截器，引入自定义拦截器，默认的拦截器就不执行了，所以还需要引入默认拦截器 -->
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="myInterceptor1" />
+				<interceptor-ref name="myInterceptor2" />
+			</interceptor-stack>
+		</interceptors>
+		<action name="test1" class="com.jyq.actions.Test1Action">
+			<interceptor-ref name="mystack" />
+		</action>
+	</package>
+</struts>

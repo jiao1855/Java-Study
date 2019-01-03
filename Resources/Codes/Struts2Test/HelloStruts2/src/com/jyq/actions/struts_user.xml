@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="user" extends="struts-default">
+		<action name="userFind" class="com.jyq.actions.UserAction" method="find" />
+		<action name="userUpdate" class="com.jyq.actions.UserAction" method="update" />
+		<action name="userDelete" class="com.jyq.actions.UserAction" method="delete" />
+		<action name="userSave" class="com.jyq.actions.UserAction" method="save" />
+	</package>
+		
+	<package name="user2" extends="struts-default">
+		<action name="user_*" class="com.jyq.actions.UserAction" method="{1}" />
+	</package>
+</struts>
