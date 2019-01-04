@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+		<!-- bean标签：
+			init-method：使用了约束中的唯一约束，且不能出现特殊字符的。
+			destroy-method：没有使用约束中的唯一约束（理论上可以出现重复的，但实际开发不能出现的）。可以出现特殊字符。
+		<bean id="userDao" class="com.jyq.dao.impl.UserDaoImpl" init-method="init" destroy-method="destroy">
+			<property name="name" value="jyq"></property>
+		</bean>
+		<bean id="userDao" class="com.jyq.dao.impl.UserDaoImpl" scope="prototype" />
+		<bean id="bean1" class="com.jyq.test.Bean1"></bean>
+		<bean id="beanFactory" class="com.jyq.test.BeanFactory" factory-method="createBean2" />
+		<bean id="bean1Factory" class="com.jyq.test.Bean1Factory"></bean>
+		<bean id="bean1" factory-bean="bean1Factory" factory-method="createBean1"></bean>
+		<bean id="car" class="com.jyq.test.Car">
+			<constructor-arg name="name" value="BYD F3" />
+			<constructor-arg name="price" value="50000" />
+		</bean>
+		<bean id="car" class="com.jyq.test.Car">
+			<property name="name" value="BYD F3" />
+			<property name="price" value="50000" />
+		</bean>
+		<bean id="engine" class="com.jyq.test.Engine">
+			<property name="name" value="擎天"></property>
+		</bean>
+		<bean id="car2" class="com.jyq.test.Car2">
+			<property name="name" value="BYD F3" />
+			<property name="engine" ref="engine" />
+		</bean>
+		<bean id="car" class="com.jyq.test.Car" p:name="BYD F3" p:price="5" />
+		<bean id="engine" class="com.jyq.test.Engine" p:name="擎天" />
+		<bean id="car2" class="com.jyq.test.Car2" p:name="BYD F3" p:engine-ref="engine" />
+		<bean id="car" class="com.jyq.test.Car">
+			<property name="name" value="#{'宝马'}" />
+			<property name="price" value="#{50}" />
+		</bean>
+		
+		<bean id="engine" class="com.jyq.test.Engine">
+			<property name="name" value="#{'擎天'}"></property>
+		</bean>
+		<bean id="car2" class="com.jyq.test.Car2">
+			<property name="name" value="#{'BYD F3'}" />
+			<property name="engine" value="#{engine}" />
+		</bean>
+		
+		<bean id="carInfo" class="com.jyq.test.CarInfo" />
+		<bean id="car" class="com.jyq.test.Car">
+			<property name="name" value="#{carInfo.name}" />
+			<property name="price" value="#{carInfo.calcPrice()}" />
+		</bean>
+		-->
+		
+		<import resource="applicationContext2.xml"/>
+</beans>
